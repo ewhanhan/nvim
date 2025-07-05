@@ -1,6 +1,5 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
-if vim.g.vscode == nil then
-  vim.g.vscode = vim.env.VSCODE_NEOVIM == "1"
+if vim.env.VSCODE then
+  vim.g.vscode = true
 end
 
 require("config.lazy")
