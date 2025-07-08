@@ -6,6 +6,7 @@ local o = vim.o
 
 opt.swapfile = false
 opt.incsearch = true
+opt.spell = false
 
 o.incsearch = true -- starts searching as soon as typing, without enter needed
 o.ignorecase = true -- ignore letter case when searching
