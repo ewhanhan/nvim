@@ -20,17 +20,13 @@ require("lazy").setup({
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
     },
-    -- ++++++++++++++++++++++++++++++++++++++++++++
-    -- ++++++++++ override plugins ++++++++++++++++
-    -- ++++++++++++++++++++++++++++++++++++++++++++
-    { import = "lazyvim.plugins.extras.vscode" },
     { import = "plugins" },
   },
   defaults = {
     lazy = false,
     version = false,
   },
-  install = { colorscheme = { "tokyonight", "gruvbox", "catppuccin" } },
+  install = { colorscheme = { "gruvbox" } },
   checker = {
     enabled = true,
     notify = false,
