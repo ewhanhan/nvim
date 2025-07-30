@@ -13,18 +13,6 @@ return {
             ignored = true,
             auto_close = true,
           },
-          grep = {
-            hidden = false,
-            ignored = false,
-          },
-          grep_word = {
-            hidden = false,
-            ignored = false,
-          },
-          grep_buffers = {
-            hidden = false,
-            ignored = false,
-          },
         },
       },
     },
