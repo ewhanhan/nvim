@@ -4,13 +4,13 @@
 -- Global LazyVim Settings
 -- ============================================================================
 -- Python host using dedicated uv environment with neovim module
-vim.g.python3_host_prog = vim.fn.expand("~/.config/nvim-python/bin/python")
+vim.g.python3_host_prog = vim.fn.expand('~/.config/nvim-python/bin/python')
 
 -- Performance optimizations
 vim.g.snacks_animate = false
 
 -- Root directory specification
-vim.g.root_spec = { "cwd" }
+vim.g.root_spec = { 'cwd' }
 
 -- ============================================================================
 -- Editor Options

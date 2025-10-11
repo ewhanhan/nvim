@@ -1,6 +1,6 @@
 return {
   {
-    "folke/snacks.nvim",
+    'folke/snacks.nvim',
     opts = {
       picker = {
         sources = {
