@@ -57,12 +57,6 @@ return {
     -- Whether cursor should follow buffer when swapping buffers between windows
     cursor_follows_swapped_bufs = false,
 
-    -- ──────────────────────────────────────────────────────────────────
-    -- TMUX INTEGRATION
-    -- ──────────────────────────────────────────────────────────────────
-    -- Explicitly enable tmux integration (auto-detected, but being explicit)
-    multiplexer_integration = 'tmux',
-
     -- Disable multiplexer navigation when current pane is zoomed
     disable_multiplexer_nav_when_zoomed = true,
 
