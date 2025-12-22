@@ -17,6 +17,11 @@ vim.g.root_spec = { 'cwd' }
 -- ============================================================================
 local opt = vim.opt
 
+-- Enable project-local configuration files
+-- .nvim.lua: General Neovim config (vim.g.dbs, options) - requires trust prompt
+-- .lazy.lua: Plugin specs - handled by lazy.nvim's local_spec (enabled by default)
+opt.exrc = true
+
 -- Files and backup
 opt.swapfile = false
 
@@ -25,3 +30,5 @@ opt.incsearch = true
 
 -- Spell checking
 opt.spell = false
+
+opt.colorcolumn = '80'
