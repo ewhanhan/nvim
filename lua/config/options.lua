@@ -3,9 +3,6 @@
 -- ============================================================================
 -- Global LazyVim Settings
 -- ============================================================================
--- Python host using dedicated uv environment with neovim module
-vim.g.python3_host_prog = vim.fn.expand('~/.config/nvim-python/bin/python')
-
 -- Performance optimizations
 vim.g.snacks_animate = false
 

@@ -19,16 +19,6 @@ Extensive language ecosystem through LazyVim extras (39 active):
 - **Development Tools**: DAP debugging, ESLint, testing framework, refactoring tools
 - **Editor Enhancements**: LuaSnip snippets, mini-comment, mini-surround, yanky, mini-move, Snacks explorer/picker
 
-### Python Environment Management
-**Dedicated Python Environment**: Uses uv-managed environment at `~/.config/nvim-python/`
-```bash
-# Setup commands (if needed):
-uv venv ~/.config/nvim-python
-uv pip install --python ~/.config/nvim-python/bin/python neovim
-```
-- **Configuration**: Python host automatically configured in `lua/config/options.lua`
-- **Verification**: Use `:checkhealth provider.python` to verify setup
-
 ## Key Features & Integrations
 
 ### Smart-splits for Tmux Integration
@@ -72,7 +62,6 @@ nvimU                   # Update Neovim plugins headlessly (from shell)
 ### Health Checks
 ```bash
 :checkhealth                  # Run comprehensive health checks
-:checkhealth provider.python  # Check Python provider specifically
 :checkhealth lazy             # Check Lazy.nvim status
 ```
 
@@ -107,7 +96,7 @@ nvimU                   # Update Neovim plugins headlessly (from shell)
 ### Core Configuration Files
 - `init.lua` - Entry point with VSCode detection and lazy loading
 - `lua/config/lazy.lua` - Lazy.nvim setup with performance optimizations
-- `lua/config/options.lua` - Python host, performance settings, editor options
+- `lua/config/options.lua` - Performance settings, editor options
 - `lua/config/keymaps.lua` - Custom keybindings and extensive VSCode mappings
 - `lua/config/autocmds.lua` - Auto commands
 - `lazyvim.json` - LazyVim extras configuration (39 active)
@@ -156,7 +145,6 @@ nvimU                   # Update Neovim plugins headlessly (from shell)
 ### Integration Points
 - **Tmux**: Smart-splits provides seamless navigation with `Ctrl+h/j/k/l` and `Alt+h/j/k/l` for resizing
 - **Terminal**: WezTerm integration through tmux
-- **Development**: Python environment isolation with uv at `~/.config/nvim-python/`
 - **Time Tracking**: WakaTtime integration for development metrics
 - **Formatting**: YAML single-quote preference, Lua formatting standards
 - **Tab Completion**: Tabout.nvim enhances tab behavior for quotes/brackets with escape sequences
