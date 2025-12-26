@@ -7,7 +7,12 @@ local map = vim.keymap.set
 -- Core Keymaps
 -- ════════════════════════════════════════════════════════════════════════════
 map('n', '<leader>fw', '<cmd>w<cr>', { desc = 'Write buffer / save file' })
-map('n', '<leader>fW', '<cmd>wall<cr>', { desc = 'Write all buffer(s) / save all file(s)' })
+map(
+  'n',
+  '<leader>fW',
+  '<cmd>wall<cr>',
+  { desc = 'Write all buffer(s) / save all file(s)' }
+)
 
 -- ════════════════════════════════════════════════════════════════════════════
 -- Keymap Overrides

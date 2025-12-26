@@ -7,7 +7,8 @@ local map = vim.keymap.set
 ---@param mappings table[] Array of {mode, lhs, vscode_command, desc}
 local function apply_mappings(mappings)
   for _, mapping in ipairs(mappings) do
-    local modes, lhs, command, desc = mapping[1], mapping[2], mapping[3], mapping[4]
+    local modes, lhs, command, desc =
+      mapping[1], mapping[2], mapping[3], mapping[4]
     if type(modes) == 'string' then
       modes = { modes }
     end
@@ -23,12 +24,37 @@ end
 -- BUFFER MANAGEMENT
 -- ════════════════════════════════════════════════════════════════════════════
 local buffer_mappings = {
-  { 'n', '<leader>bb', 'workbench.action.openPreviousRecentlyUsedEditor', 'Switch to Other Buffer' },
-  { 'n', '<leader>`', 'workbench.action.openPreviousRecentlyUsedEditor', 'Switch to Other Buffer' },
+  {
+    'n',
+    '<leader>bb',
+    'workbench.action.openPreviousRecentlyUsedEditor',
+    'Switch to Other Buffer',
+  },
+  {
+    'n',
+    '<leader>`',
+    'workbench.action.openPreviousRecentlyUsedEditor',
+    'Switch to Other Buffer',
+  },
   { 'n', '<leader>bd', 'workbench.action.closeActiveEditor', 'Delete Buffer' },
-  { 'n', '<leader>bo', 'workbench.action.closeOtherEditors', 'Delete Other Buffers' },
-  { 'n', '<leader>bD', 'workbench.action.closeEditorsInGroup', 'Delete Buffer and Window' },
-  { 'n', '<leader>ba', 'workbench.action.closeAllEditors', 'Close All Buffers' },
+  {
+    'n',
+    '<leader>bo',
+    'workbench.action.closeOtherEditors',
+    'Delete Other Buffers',
+  },
+  {
+    'n',
+    '<leader>bD',
+    'workbench.action.closeEditorsInGroup',
+    'Delete Buffer and Window',
+  },
+  {
+    'n',
+    '<leader>ba',
+    'workbench.action.closeAllEditors',
+    'Close All Buffers',
+  },
   { 'n', '<leader>bp', 'workbench.action.pinEditor', 'Pin Buffer' },
   { 'n', '<leader>bP', 'workbench.action.unpinEditor', 'Unpin Buffer' },
 }
@@ -40,8 +66,18 @@ local code_mappings = {
   { { 'n', 'v' }, '<leader>ca', 'editor.action.quickFix', 'Code Action' },
   { { 'n', 'v' }, '<leader>cA', 'editor.action.sourceAction', 'Source Action' },
   { 'n', '<leader>cr', 'editor.action.rename', 'Rename' },
-  { { 'n', 'v' }, '<leader>cc', 'codelens.showLensesInCurrentLine', 'Run Codelens' },
-  { { 'n', 'v' }, '<leader>cf', 'editor.action.formatDocument', 'Format Document' },
+  {
+    { 'n', 'v' },
+    '<leader>cc',
+    'codelens.showLensesInCurrentLine',
+    'Run Codelens',
+  },
+  {
+    { 'n', 'v' },
+    '<leader>cf',
+    'editor.action.formatDocument',
+    'Format Document',
+  },
   { 'v', '<leader>cf', 'editor.action.formatSelection', 'Format Selection' },
 }
 
@@ -56,14 +92,39 @@ local explorer_mappings = {
 -- TERMINAL
 -- ════════════════════════════════════════════════════════════════════════════
 local terminal_mappings = {
-  { 'n', '<leader>ft', 'workbench.action.terminal.toggleTerminal', 'Terminal (Root Dir)' },
-  { { 'n', 't' }, '<C-/>', 'workbench.action.terminal.toggleTerminal', 'Toggle Terminal' },
-  { { 'n', 't' }, '<C-_>', 'workbench.action.terminal.toggleTerminal', 'Toggle Terminal (alt)' },
+  {
+    'n',
+    '<leader>ft',
+    'workbench.action.terminal.toggleTerminal',
+    'Terminal (Root Dir)',
+  },
+  {
+    { 'n', 't' },
+    '<C-/>',
+    'workbench.action.terminal.toggleTerminal',
+    'Toggle Terminal',
+  },
+  {
+    { 'n', 't' },
+    '<C-_>',
+    'workbench.action.terminal.toggleTerminal',
+    'Toggle Terminal (alt)',
+  },
   { 'n', '<leader>fT', 'workbench.action.terminal.new', 'New Terminal' },
   { 'n', '<leader>fs', 'workbench.action.terminal.split', 'Split Terminal' },
   { 'n', '<leader>fn', 'workbench.action.terminal.focusNext', 'Next Terminal' },
-  { 'n', '<leader>fp', 'workbench.action.terminal.focusPrevious', 'Previous Terminal' },
-  { 't', '<Esc><Esc>', 'workbench.action.focusActiveEditorGroup', 'Focus Editor' },
+  {
+    'n',
+    '<leader>fp',
+    'workbench.action.terminal.focusPrevious',
+    'Previous Terminal',
+  },
+  {
+    't',
+    '<Esc><Esc>',
+    'workbench.action.focusActiveEditorGroup',
+    'Focus Editor',
+  },
 }
 
 -- ════════════════════════════════════════════════════════════════════════════
@@ -81,43 +142,153 @@ local terminal_nav_mappings = {
 -- ════════════════════════════════════════════════════════════════════════════
 local window_mappings = {
   -- Splitting
-  { 'n', '<leader>w-', 'workbench.action.splitEditorDown', 'Split Window Below' },
+  {
+    'n',
+    '<leader>w-',
+    'workbench.action.splitEditorDown',
+    'Split Window Below',
+  },
   { 'n', '<leader>w|', 'workbench.action.splitEditor', 'Split Window Right' },
-  { 'n', '<leader>ws', 'workbench.action.splitEditorDown', 'Split Window Below' },
+  {
+    'n',
+    '<leader>ws',
+    'workbench.action.splitEditorDown',
+    'Split Window Below',
+  },
   { 'n', '<leader>wv', 'workbench.action.splitEditor', 'Split Window Right' },
   -- Navigation
   { 'n', '<leader>wh', 'workbench.action.focusLeftGroup', 'Go to Left Window' },
-  { 'n', '<leader>wj', 'workbench.action.focusBelowGroup', 'Go to Lower Window' },
-  { 'n', '<leader>wk', 'workbench.action.focusAboveGroup', 'Go to Upper Window' },
-  { 'n', '<leader>wl', 'workbench.action.focusRightGroup', 'Go to Right Window' },
+  {
+    'n',
+    '<leader>wj',
+    'workbench.action.focusBelowGroup',
+    'Go to Lower Window',
+  },
+  {
+    'n',
+    '<leader>wk',
+    'workbench.action.focusAboveGroup',
+    'Go to Upper Window',
+  },
+  {
+    'n',
+    '<leader>wl',
+    'workbench.action.focusRightGroup',
+    'Go to Right Window',
+  },
   { 'n', '<leader>ww', 'workbench.action.focusNextGroup', 'Next Window' },
-  { 'n', '<leader>wW', 'workbench.action.focusPreviousGroup', 'Previous Window' },
+  {
+    'n',
+    '<leader>wW',
+    'workbench.action.focusPreviousGroup',
+    'Previous Window',
+  },
   -- Moving editors
-  { 'n', '<leader>wH', 'workbench.action.moveEditorToLeftGroup', 'Move Editor Left' },
-  { 'n', '<leader>wJ', 'workbench.action.moveEditorToBelowGroup', 'Move Editor Down' },
-  { 'n', '<leader>wK', 'workbench.action.moveEditorToAboveGroup', 'Move Editor Up' },
-  { 'n', '<leader>wL', 'workbench.action.moveEditorToRightGroup', 'Move Editor Right' },
+  {
+    'n',
+    '<leader>wH',
+    'workbench.action.moveEditorToLeftGroup',
+    'Move Editor Left',
+  },
+  {
+    'n',
+    '<leader>wJ',
+    'workbench.action.moveEditorToBelowGroup',
+    'Move Editor Down',
+  },
+  {
+    'n',
+    '<leader>wK',
+    'workbench.action.moveEditorToAboveGroup',
+    'Move Editor Up',
+  },
+  {
+    'n',
+    '<leader>wL',
+    'workbench.action.moveEditorToRightGroup',
+    'Move Editor Right',
+  },
   -- Closing
-  { 'n', '<leader>wd', 'workbench.action.closeEditorsInGroup', 'Delete Window' },
-  { 'n', '<leader>wc', 'workbench.action.closeActiveEditor', 'Close Current Editor' },
+  {
+    'n',
+    '<leader>wd',
+    'workbench.action.closeEditorsInGroup',
+    'Delete Window',
+  },
+  {
+    'n',
+    '<leader>wc',
+    'workbench.action.closeActiveEditor',
+    'Close Current Editor',
+  },
   { 'n', '<leader>wq', 'workbench.action.closeEditorsInGroup', 'Close Window' },
-  { 'n', '<leader>wo', 'workbench.action.closeOtherEditors', 'Close Other Editors' },
-  { 'n', '<leader>wO', 'workbench.action.joinAllGroups', 'Close Other Windows' },
+  {
+    'n',
+    '<leader>wo',
+    'workbench.action.closeOtherEditors',
+    'Close Other Editors',
+  },
+  {
+    'n',
+    '<leader>wO',
+    'workbench.action.joinAllGroups',
+    'Close Other Windows',
+  },
   -- Resizing
   { 'n', '<leader>w<', 'workbench.action.decreaseViewWidth', 'Decrease Width' },
   { 'n', '<leader>w>', 'workbench.action.increaseViewWidth', 'Increase Width' },
-  { 'n', '<leader>w+', 'workbench.action.increaseViewHeight', 'Increase Height' },
-  { 'n', '<leader>w_', 'workbench.action.decreaseViewHeight', 'Decrease Height' },
+  {
+    'n',
+    '<leader>w+',
+    'workbench.action.increaseViewHeight',
+    'Increase Height',
+  },
+  {
+    'n',
+    '<leader>w_',
+    'workbench.action.decreaseViewHeight',
+    'Decrease Height',
+  },
   { 'n', '<leader>w=', 'workbench.action.evenEditorWidths', 'Equal Sizes' },
   -- Arrangement
-  { 'n', '<leader>wr', 'workbench.action.toggleEditorGroupLayout', 'Rotate Layout' },
-  { 'n', '<leader>wf', 'workbench.action.focusActiveEditorGroup', 'Focus Editor' },
-  { 'n', '<leader>wt', 'workbench.action.moveEditorToNewWindow', 'Move to New Window' },
+  {
+    'n',
+    '<leader>wr',
+    'workbench.action.toggleEditorGroupLayout',
+    'Rotate Layout',
+  },
+  {
+    'n',
+    '<leader>wf',
+    'workbench.action.focusActiveEditorGroup',
+    'Focus Editor',
+  },
+  {
+    'n',
+    '<leader>wt',
+    'workbench.action.moveEditorToNewWindow',
+    'Move to New Window',
+  },
   { 'n', '<leader>wT', 'workbench.action.newWindow', 'New Empty Window' },
   -- Maximizing
-  { 'n', '<leader>wm', 'workbench.action.toggleMaximizeEditorGroup', 'Toggle Maximize' },
-  { 'n', '<leader>wz', 'workbench.action.toggleMaximizeEditorGroup', 'Zoom Toggle' },
-  { 'n', '<leader>wM', 'workbench.action.maximizeEditorHideSidebar', 'Maximize Hide All' },
+  {
+    'n',
+    '<leader>wm',
+    'workbench.action.toggleMaximizeEditorGroup',
+    'Toggle Maximize',
+  },
+  {
+    'n',
+    '<leader>wz',
+    'workbench.action.toggleMaximizeEditorGroup',
+    'Zoom Toggle',
+  },
+  {
+    'n',
+    '<leader>wM',
+    'workbench.action.maximizeEditorHideSidebar',
+    'Maximize Hide All',
+  },
   -- Tab navigation
   { 'n', '<leader>wn', 'workbench.action.nextEditor', 'Next Tab' },
   { 'n', '<leader>wp', 'workbench.action.previousEditor', 'Previous Tab' },
