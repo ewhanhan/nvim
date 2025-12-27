@@ -4,156 +4,101 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a **LazyVim-based Neovim configuration** that provides a sophisticated development environment with comprehensive language support, tmux integration, and VSCode compatibility.
-
-## Key Architecture
-
-### LazyVim Foundation
-- **Base Framework**: Built on LazyVim (https://lazyvim.org) for structured plugin management
-- **Plugin Manager**: Uses lazy.nvim for efficient lazy loading and performance optimization
-- **Modular Structure**: Configuration split between `config/` (core settings) and `plugins/` (plugin customizations)
-
-### Language Support
-Extensive language ecosystem through LazyVim extras (39 active):
-- **Languages**: Angular, C/C++, CMake, Docker, Git, Go, Java, JSON, Markdown, Prisma, Python, Rust, SQL, Svelte, Tailwind, LaTeX, TOML, TypeScript, Vue, YAML
-- **Development Tools**: DAP debugging, ESLint, testing framework, refactoring tools
-- **Editor Enhancements**: LuaSnip snippets, mini-comment, mini-surround, yanky, mini-move, Snacks explorer/picker
-
-## Key Features & Integrations
-
-### Smart-splits for Tmux Integration
-**Critical Integration**: Must load immediately (not lazy) for seamless tmux navigation
-- **Navigation**: `Ctrl+h/j/k/l` works across both Neovim splits and tmux panes
-- **Resizing**: `Alt+h/j/k/l` for window resizing
-- **Wrap Behavior**: Configured for tmux users with edge wrapping enabled
-
-### Snacks.nvim Enhancements
-- **File Picker**: Shows hidden and ignored files by default
-- **Explorer**: Auto-closes and displays hidden files
-- **Performance**: Replaces default telescope for better performance
-
-### VSCode Compatibility
-**Comprehensive VSCode Integration**: 200+ keybinding mappings for seamless dual-editor workflow
-- **Buffer Management**: `<leader>b*` commands mapped to VSCode editor actions
-- **Window Management**: `<leader>w*` commands for VSCode group operations
-- **Terminal Integration**: `<leader>f*` commands for VSCode terminal
-- **Code Actions**: `<leader>c*` commands for LSP operations
-- **Navigation**: Consistent `Ctrl+h/j/k/l` in terminal mode
-
-### Theme & Visual Consistency
-- **Gruvbox Theme**: Coordinated with terminal and tmux for visual consistency
-- **Performance**: Animations disabled (`vim.g.snacks_animate = false`)
-- **Custom Status**: Lualine configuration with location section
+LazyVim-based Neovim configuration with tmux integration and VSCode compatibility.
 
 ## Development Commands
 
-### Plugin Management
 ```bash
-# Neovim commands:
-:Lazy                    # Open plugin manager interface
-:Lazy update            # Update all plugins
-:Lazy sync              # Synchronize plugins (install missing, update existing)
-:Lazy clean             # Remove unused plugins
+# Plugin management
+:Lazy                    # Plugin manager UI
+:Lazy sync              # Install/update plugins
+:LazyExtras             # Manage language extras
 
-# Shell commands:
-nvimU                   # Update Neovim plugins headlessly (from shell)
+# Shell alias
+nvimU                   # Headless plugin update
+
+# Code quality (run from repo root)
+stylua lua/             # Format Lua (80 col, 2 spaces, single quotes)
+selene lua/             # Lint Lua
 ```
 
-### Health Checks
-```bash
-:checkhealth                  # Run comprehensive health checks
-:checkhealth lazy             # Check Lazy.nvim status
+## Architecture
+
+### Dual-Editor Mode
+
+`init.lua` detects VSCode via `vim.env.VSCODE` and loads appropriate keymaps:
+
+- **Terminal Neovim**: Full config with smart-splits tmux integration
+- **VSCode Neovim**: Minimal config with `lua/config/vscode-keymaps.lua`
+
+### Key Design Decisions
+
+**Root Detection Disabled**: `g.root_spec = { 'cwd' }` forces cwd as root. This makes `(cwd)` keymap variants redundant - they're disabled in `snacks.lua` and `keymaps.lua`.
+
+**Smart-splits Non-Lazy**: `lua/plugins/smart-splits.lua` uses `lazy = false` - critical for immediate tmux navigation. Don't change this.
+
+**Snacks Replaces Telescope**: File picker/explorer via snacks.nvim with hidden files visible by default.
+
+**Project-Local Config**: `opt.exrc = true` enables `.nvim.lua`/`.lazy.lua` files per project.
+
+## Plugin Customization Pattern
+
+All plugins in `lua/plugins/` follow LazyVim's override pattern:
+
+```lua
+-- Extend existing plugin
+return {
+  {
+    'plugin/name',
+    opts = { ... },  -- Merged with defaults
+  },
+}
+
+-- Use opts function when you need to access/modify parent defaults
+return {
+  {
+    'plugin/name',
+    opts = function(_, opts)
+      table.insert(opts.sources, { name = 'new' })
+      return opts
+    end,
+  },
+}
 ```
 
-### LazyVim Extras Management
-```bash
-:LazyExtras             # Manage LazyVim extras (language support, tools)
-:LazyVim                # Access LazyVim information and utilities
+**Merging rules**: `opts`, `keys`, `cmd`, `event`, `ft`, `dependencies` extend defaults. All other properties (`config`, `init`, `lazy`, etc.) replace entirely.
+
+**Disabling keymaps**: Set to `false`. Normal mode keymaps don't need a mode specified; multi-mode keymaps must match exactly:
+
+```lua
+keys = {
+  { '<leader>x', false },                    -- Normal mode (no mode needed)
+  { '<leader>y', false, mode = { 'n', 'x' } }, -- Multi-mode (must match original)
+}
 ```
 
-### Code Quality Tools
-**Lua Linting & Formatting**:
-- **selene.toml**: Lua linting configuration with vim std and mixed table allowance
-- **stylua.toml**: Lua formatting (2 spaces, 120 column width, sort requires enabled)
+Use `keys = {}` to disable all keymaps, or `keys = function() return {...} end` to replace them entirely. The same function pattern works for `keys`, `ft`, `event`, and `cmd`.
 
-### Testing & Debugging
-```bash
-# Testing framework integration:
-:Neotest run              # Run nearest test
-:Neotest run file         # Run tests in current file
-:Neotest summary          # View test summary
+## Key Integrations
 
-# DAP debugging:
-<leader>db                # Toggle breakpoint
-<leader>dr                # Start/continue debugging
-<leader>ds                # Step over
-<leader>di                # Step into
-<leader>do                # Step out
-```
+| Integration   | Config Location      | Notes                               |
+| ------------- | -------------------- | ----------------------------------- |
+| Tmux nav      | `smart-splits.lua`   | `Ctrl+h/j/k/l` across nvim/tmux     |
+| VSCode        | `vscode-keymaps.lua` | LazyVim parity for VSCode Neovim    |
+| Wakatime      | `wakatime.lua`       | Non-lazy for accurate tracking      |
+| Markdown lint | `markdown.lua`       | Uses global `~/.markdownlint.jsonc` |
 
-## Configuration Structure
+## File Formatting Standards
 
-### Core Configuration Files
-- `init.lua` - Entry point with VSCode detection and lazy loading
-- `lua/config/lazy.lua` - Lazy.nvim setup with performance optimizations
-- `lua/config/options.lua` - Performance settings, editor options
-- `lua/config/keymaps.lua` - Custom keybindings and extensive VSCode mappings
-- `lua/config/autocmds.lua` - Auto commands
-- `lazyvim.json` - LazyVim extras configuration (39 active)
+| Type | Tool   | Config                                    |
+| ---- | ------ | ----------------------------------------- |
+| Lua  | stylua | 80 col, 2 spaces, single quotes preferred |
+| Lua  | selene | vim std, mixed tables allowed             |
+| YAML | yamlls | Single quotes enforced                    |
 
-### Plugin Customizations
-- `lua/plugins/smart-splits.lua` - Tmux integration with comprehensive configuration
-- `lua/plugins/snacks.lua` - Enhanced file picker and explorer settings
-- `lua/plugins/colourscheme.lua` - Gruvbox theme configuration
-- `lua/plugins/wakatime.lua` - Time tracking (not lazy-loaded)
-- `lua/plugins/yaml.lua` - Single-quote YAML formatting
-- `lua/plugins/lualine.lua` - Status line customization (location section, cleaner layout)
-- `lua/plugins/tabout.lua` - Smart tab completion with quote/bracket escaping
-- `lua/plugins/disabled.lua` - Plugin disabling (currently empty)
+## Critical Constraints
 
-### Snippets
-- **Custom JavaScript/TypeScript snippets** in `snippets/` directory
-- **Managed through LazyVim LuaSnip integration**
-- **Key snippets**: `log` (console.log), `function`, `for`/`forof`/`foreach`, `if`/`ifelse`, `switch`, `while`, `trycatch`, `settimeout`/`setinterval`
-
-## Performance Optimizations
-
-### Startup Performance
-- **Disabled Runtime Plugins**: gzip, tarPlugin, tohtml, tutor, zipPlugin
-- **Lazy Loading**: Most plugins except smart-splits (immediate tmux integration)
-- **Modern APIs**: Uses `vim.uv` over deprecated `vim.loop`
-
-### Development Optimizations
-- **Plugin Checker**: Enabled with notifications disabled for background updates
-- **Version Management**: Plugin versions unlocked for latest features
-- **Install Fallbacks**: Colorscheme fallbacks (tokyonight, gruvbox)
-
-## Working with This Configuration
-
-### Modification Patterns
-- **Plugin Additions**: Create new files in `lua/plugins/` directory
-- **Core Settings**: Modify files in `lua/config/` directory
-- **Language Support**: Use `:LazyExtras` to add/remove language support
-- **VSCode Mappings**: Extend `lua/config/keymaps.lua` VSCode section
-
-### Performance Considerations
-- Keep smart-splits as non-lazy for immediate tmux integration
-- Use conditional loading patterns for optional integrations
-- Test startup time impact of new plugins
-- Maintain VSCode compatibility when adding keybindings
-
-### Integration Points
-- **Tmux**: Smart-splits provides seamless navigation with `Ctrl+h/j/k/l` and `Alt+h/j/k/l` for resizing
-- **Terminal**: WezTerm integration through tmux
-- **Time Tracking**: WakaTtime integration for development metrics
-- **Formatting**: YAML single-quote preference, Lua formatting standards
-- **Tab Completion**: Tabout.nvim enhances tab behavior for quotes/brackets with escape sequences
-- **Version Control**: Plugin versions locked in `lazy-lock.json` for reproducible builds
-
-## Important Notes
-
-### Critical Configuration Patterns
-- **Smart-splits**: Must remain `lazy = false` for immediate tmux integration
-- **VSCode Detection**: Configuration automatically adapts when `vim.env.VSCODE` is detected
-- **Autocmds**: Minimal custom autocmds - relies primarily on LazyVim defaults
-- **Plugin Locking**: Use `lazy-lock.json` to maintain stable plugin versions across installations
+- **Don't lazy-load smart-splits** - breaks tmux integration
+- **Keep `root_spec = { 'cwd' }`** - many keymaps depend on this
+- **VSCode keymaps are separate** - changes to `keymaps.lua` won't affect VSCode mode
+- **Plugin versions unlocked** - uses latest, not pinned versions
