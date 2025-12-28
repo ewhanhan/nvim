@@ -22,6 +22,9 @@ nvimU                   # Headless plugin update
 # Code quality (run from repo root)
 stylua lua/             # Format Lua (80 col, 2 spaces, single quotes)
 selene lua/             # Lint Lua
+
+# Keymap inspection (trace <Lua N: path:line> to source)
+nvim --headless -c 'map' -c 'qa!' 2>&1
 ```
 
 ## Architecture
