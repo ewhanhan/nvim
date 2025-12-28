@@ -83,12 +83,13 @@ Use `keys = {}` to disable all keymaps, or `keys = function() return {...} end` 
 
 ## Key Integrations
 
-| Integration   | Config Location      | Notes                               |
-| ------------- | -------------------- | ----------------------------------- |
-| Tmux nav      | `smart-splits.lua`   | `Ctrl+h/j/k/l` across nvim/tmux     |
-| VSCode        | `vscode-keymaps.lua` | LazyVim parity for VSCode Neovim    |
-| Wakatime      | `wakatime.lua`       | Non-lazy for accurate tracking      |
-| Markdown lint | `markdown.lua`       | Uses global `~/.markdownlint.jsonc` |
+| Integration   | Config Location      | Notes                                                      |
+| ------------- | -------------------- | ---------------------------------------------------------- |
+| Tmux nav      | `smart-splits.lua`   | `Ctrl+h/j/k/l` across nvim/tmux                            |
+| VSCode        | `vscode-keymaps.lua` | LazyVim parity for VSCode Neovim                           |
+| Wakatime      | `wakatime.lua`       | Non-lazy for accurate tracking                             |
+| Markdown lint | `markdown.lua`       | Uses global `~/.markdownlint.jsonc`                        |
+| Surround      | `surround.lua`       | Visual `S` overrides flash; use `<c-space>` for treesitter |
 
 ## File Formatting Standards
 
