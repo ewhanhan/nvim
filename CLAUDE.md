@@ -31,7 +31,7 @@ nvim --headless -c 'map' -c 'qa!' 2>&1
 
 ### Dual-Editor Mode
 
-`init.lua` detects VSCode via `vim.env.VSCODE` and loads appropriate keymaps:
+vscode-neovim sets `vim.g.vscode` automatically before init.lua runs:
 
 - **Terminal Neovim**: Full config with smart-splits tmux integration
 - **VSCode Neovim**: Minimal config with `lua/config/vscode-keymaps.lua`
