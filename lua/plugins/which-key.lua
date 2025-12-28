@@ -17,6 +17,8 @@ return {
           ' L', -- LazyVim Changelog
           ' ?', -- Buffer Keymaps (which-key)
           ' :', -- Command History
+          ' |', -- Split horizontal
+          ' -', -- Split vertical
         }
         return not vim.tbl_contains(hidden_keys, mapping.lhs)
       end,

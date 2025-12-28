@@ -36,6 +36,115 @@ The magic: these work across the tmux boundary. Press `Ctrl+l` in Neovim and it 
 - Pin buffers with `<leader>bp` and delete all non-pinned buffers with `<leader>bP`
 - Add TODOs in files you want to work on later but don't need now, then delete their buffers - git will track them
 
+## Split & Window Management
+
+Use `<C-w>` for window commands — it's portable, fast, and the Vim standard.
+
+**Core commands (memorize these):**
+
+| Key      | Action                   |
+| -------- | ------------------------ |
+| `<C-w>v` | Vertical split (right)   |
+| `<C-w>s` | Horizontal split (below) |
+| `<C-w>q` | Close window             |
+| `<C-w>o` | Close all OTHER windows  |
+| `<C-w>=` | Equalize sizes           |
+
+**LazyVim extras (no native equivalent):**
+
+| Key          | Action                              |
+| ------------ | ----------------------------------- |
+| `<leader>wm` | Toggle maximize                     |
+| `<leader>w`  | Show which-key menu (for discovery) |
+
+**Moving windows:**
+
+| Key      | Action                  |
+| -------- | ----------------------- |
+| `<C-w>H` | Move split to far left  |
+| `<C-w>J` | Move split to bottom    |
+| `<C-w>K` | Move split to top       |
+| `<C-w>L` | Move split to far right |
+| `<C-w>r` | Rotate splits           |
+| `<C-w>x` | Swap with next split    |
+
+**Resizing:**
+
+| Key        | Action                |
+| ---------- | --------------------- |
+| `<C-w>=`   | Equalize all          |
+| `<C-w>>`   | Wider                 |
+| `<C-w><`   | Narrower              |
+| `<C-w>+`   | Taller                |
+| `<C-w>-`   | Shorter               |
+| `Alt+hjkl` | Resize (smart-splits) |
+
+Note: LazyVim also maps `<leader>|` and `<leader>-` for splits, but `<C-w>v/s` is faster and portable.
+
+### Power User Split Workflows
+
+**Code + Test side-by-side:**
+
+From Snacks picker, open files in splits (press from **list**, not input):
+
+```
+<C-v>  → open in vertical split
+<C-s>  → open in horizontal split
+<C-t>  → open in new tab
+```
+
+Workflow: `<leader><space>` → filter → `<Down>` to list → `<C-v>`.
+
+Or split first: `<leader>|` → `<leader><space>` → `<CR>`.
+
+**Code + Terminal:**
+
+```
+<C-/>      → toggle floating terminal
+<leader>ft → floating terminal (root dir)
+<leader>fT → floating terminal (cwd)
+```
+
+Note: LazyVim terminals are floating by default. For a split terminal, use `:terminal` after creating a split.
+
+**Definition/reference hunting:**
+
+```
+gd         → go to definition
+gr         → find all references (opens in picker)
+<C-o>      → jump back when done
+```
+
+To open definition in a split (LazyVim):
+
+```
+<C-w>v → gd   → split first, then jump to definition
+```
+
+Or from the picker (when multiple results): `<C-v>` for vsplit, `<C-x>` for hsplit.
+
+**Narrow reference split:**
+
+```
+<C-w>v     → vertical split
+<C-w>L     → move to far right
+<C-w>10<   → shrink to ~10 columns (for constants/types)
+```
+
+### Tabs as Workspaces
+
+Use tabs to separate contexts (frontend vs backend, feature vs tests):
+
+| Key              | Action        |
+| ---------------- | ------------- |
+| `<leader><tab>n` | New tab       |
+| `<leader><tab>d` | Close tab     |
+| `<leader><tab>]` | Next tab      |
+| `<leader><tab>[` | Previous tab  |
+| `<leader><tab>l` | Last used tab |
+
+**Mental model:** Tabs = workspaces, Splits = views within workspace, Buffers = open files.
+
 ## Search & Resume
 
 | Key          | Action                                           |
@@ -131,3 +240,7 @@ Snacks.nvim replaces Telescope as the file picker. Key difference: **hidden file
 | smart-splits  | Tmux-aware navigation            | `C-hjkl` works across nvim/tmux |
 | nvim-surround | Text surround operations         | `ys`, `ds`, `cs`, `S`           |
 | snacks.nvim   | File picker (replaces Telescope) | Hidden files visible by default |
+
+---
+
+**Version:** 1.0.0
