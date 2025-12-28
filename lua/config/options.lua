@@ -3,15 +3,11 @@
 local g = vim.g
 local opt = vim.opt
 
--- ════════════════════════════════════════════════════════════════════════════
--- LazyVim Globals
--- ════════════════════════════════════════════════════════════════════════════
+-- === LAZYVIM GLOBALS ===
 g.snacks_animate = false
 g.root_spec = { 'cwd' } -- Disable smart root detection, always use cwd
 
--- ════════════════════════════════════════════════════════════════════════════
--- Editor Options
--- ════════════════════════════════════════════════════════════════════════════
+-- === EDITOR OPTIONS ===
 opt.exrc = true -- Project-local .nvim.lua/.lazy.lua config files
 opt.swapfile = false
 opt.incsearch = true

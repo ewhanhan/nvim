@@ -2,9 +2,7 @@ return {
   'mrjones2014/smart-splits.nvim',
   lazy = false, -- CRITICAL: Must load immediately for tmux integration
   opts = {
-    -- ──────────────────────────────────────────────────────────────────
-    -- IGNORE SETTINGS - Optimize for LazyVim ecosystem
-    -- ──────────────────────────────────────────────────────────────────
+    -- === IGNORE SETTINGS ===
     -- Ignored buffer types (only affects resizing, not navigation)
     ignored_buftypes = {
       'nofile', -- bufferline, floating windows
@@ -31,9 +29,7 @@ return {
       'snacks_picker_list', -- snacks.nvim picker/telescope lists
     },
 
-    -- ──────────────────────────────────────────────────────────────────
-    -- NAVIGATION BEHAVIOR
-    -- ──────────────────────────────────────────────────────────────────
+    -- === NAVIGATION BEHAVIOR ===
     -- Default resize amount (can be overridden with count, e.g., "3<M-h>")
     default_amount = 3,
 
@@ -48,9 +44,7 @@ return {
     -- 'mux' => Always forward action to multiplexer
     float_win_behavior = 'previous',
 
-    -- ──────────────────────────────────────────────────────────────────
-    -- CURSOR BEHAVIOR
-    -- ──────────────────────────────────────────────────────────────────
+    -- === CURSOR BEHAVIOR ===
     -- When moving left/right, keep cursor on same screen row regardless of line numbers
     move_cursor_same_row = false,
 
@@ -60,30 +54,22 @@ return {
     -- Disable multiplexer navigation when current pane is zoomed
     disable_multiplexer_nav_when_zoomed = true,
 
-    -- ──────────────────────────────────────────────────────────────────
-    -- PERFORMANCE OPTIMIZATION
-    -- ──────────────────────────────────────────────────────────────────
+    -- === PERFORMANCE OPTIMIZATION ===
     -- Ignore these autocmd events during smart-splits computations for better performance
     ignored_events = {
       'BufEnter',
       'WinEnter',
     },
 
-    -- ──────────────────────────────────────────────────────────────────
-    -- LOGGING (for troubleshooting)
-    -- ──────────────────────────────────────────────────────────────────
+    -- === LOGGING ===
     log_level = 'info', -- 'trace'|'debug'|'info'|'warn'|'error'|'fatal'
   },
 
-  -- ══════════════════════════════════════════════════════════════════════
-  -- KEYMAPS - Optimized for your existing configuration
-  -- ══════════════════════════════════════════════════════════════════════
+  -- === KEYMAPS ===
   -- NOTE: These keymaps work in normal mode and won't conflict with your
   -- existing terminal mode VSCode integration mappings (<C-h/j/k/l> in terminal mode)
   keys = {
-    -- ──────────────────────────────────────────────────────────────────
-    -- NAVIGATION - <C-h/j/k/l> (works with both Neovim splits and tmux panes)
-    -- ──────────────────────────────────────────────────────────────────
+    -- === NAVIGATION ===
     {
       '<C-h>',
       function()
@@ -124,9 +110,7 @@ return {
       desc = 'Move to Previous Split/Pane',
       mode = 'n',
     },
-    -- ──────────────────────────────────────────────────────────────────
-    -- RESIZING - <M-h/j/k/l> (Alt/Meta + hjkl)
-    -- ──────────────────────────────────────────────────────────────────
+    -- === RESIZING ===
     -- NOTE: On macOS, you may need to configure your terminal to send Alt as Meta
     -- Alternative keybinds if Alt doesn't work: <leader>rh/rj/rk/rl
     {

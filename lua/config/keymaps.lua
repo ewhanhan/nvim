@@ -3,9 +3,7 @@
 
 local map = vim.keymap.set
 
--- ════════════════════════════════════════════════════════════════════════════
--- Core Keymaps
--- ════════════════════════════════════════════════════════════════════════════
+-- === CORE KEYMAPS ===
 map('n', '<leader>fw', '<cmd>w<cr>', { desc = 'Write buffer / save file' })
 map(
   'n',
@@ -14,9 +12,7 @@ map(
   { desc = 'Write all buffer(s) / save all file(s)' }
 )
 
--- ════════════════════════════════════════════════════════════════════════════
--- Keymap Overrides
--- ════════════════════════════════════════════════════════════════════════════
+-- === KEYMAP OVERRIDES ===
 -- root_spec = { 'cwd' } makes (cwd) variants redundant
 -- Plugin keymaps disabled in lua/plugins/snacks.lua via keys = false
 vim.api.nvim_create_autocmd('User', {
@@ -28,9 +24,7 @@ vim.api.nvim_create_autocmd('User', {
   end,
 })
 
--- ════════════════════════════════════════════════════════════════════════════
--- VSCode Integration
--- ════════════════════════════════════════════════════════════════════════════
+-- === VSCODE INTEGRATION ===
 if vim.g.vscode then
   require('config.vscode-keymaps')
 end

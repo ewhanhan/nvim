@@ -20,9 +20,7 @@ local function apply_mappings(mappings)
   end
 end
 
--- ════════════════════════════════════════════════════════════════════════════
--- BUFFER MANAGEMENT
--- ════════════════════════════════════════════════════════════════════════════
+-- === BUFFER MANAGEMENT ===
 local buffer_mappings = {
   {
     'n',
@@ -59,9 +57,7 @@ local buffer_mappings = {
   { 'n', '<leader>bP', 'workbench.action.unpinEditor', 'Unpin Buffer' },
 }
 
--- ════════════════════════════════════════════════════════════════════════════
--- LSP/CODE ACTIONS
--- ════════════════════════════════════════════════════════════════════════════
+-- === LSP & CODE ACTIONS ===
 local code_mappings = {
   { { 'n', 'v' }, '<leader>ca', 'editor.action.quickFix', 'Code Action' },
   { { 'n', 'v' }, '<leader>cA', 'editor.action.sourceAction', 'Source Action' },
@@ -81,16 +77,12 @@ local code_mappings = {
   { 'v', '<leader>cf', 'editor.action.formatSelection', 'Format Selection' },
 }
 
--- ════════════════════════════════════════════════════════════════════════════
--- FILE EXPLORER
--- ════════════════════════════════════════════════════════════════════════════
+-- === FILE EXPLORER ===
 local explorer_mappings = {
   { 'n', '<leader>e', 'workbench.view.explorer', 'Explorer' },
 }
 
--- ════════════════════════════════════════════════════════════════════════════
--- TERMINAL
--- ════════════════════════════════════════════════════════════════════════════
+-- === TERMINAL ===
 local terminal_mappings = {
   {
     'n',
@@ -127,9 +119,7 @@ local terminal_mappings = {
   },
 }
 
--- ════════════════════════════════════════════════════════════════════════════
--- TERMINAL NAVIGATION
--- ════════════════════════════════════════════════════════════════════════════
+-- === TERMINAL NAVIGATION ===
 local terminal_nav_mappings = {
   { 't', '<C-h>', 'workbench.action.focusLeftGroup', 'Focus left group' },
   { 't', '<C-j>', 'workbench.action.focusBelowGroup', 'Focus below group' },
@@ -137,9 +127,7 @@ local terminal_nav_mappings = {
   { 't', '<C-l>', 'workbench.action.focusRightGroup', 'Focus right group' },
 }
 
--- ════════════════════════════════════════════════════════════════════════════
--- WINDOW MANAGEMENT
--- ════════════════════════════════════════════════════════════════════════════
+-- === WINDOW MANAGEMENT ===
 local window_mappings = {
   -- Splitting
   {
@@ -296,9 +284,7 @@ local window_mappings = {
   { 'n', '<leader>w[', 'workbench.action.previousEditor', 'Previous Tab' },
 }
 
--- ════════════════════════════════════════════════════════════════════════════
--- QUICKFIX/PROBLEMS
--- ════════════════════════════════════════════════════════════════════════════
+-- === QUICKFIX & PROBLEMS ===
 local quickfix_mappings = {
   { 'n', '<leader>xq', 'workbench.actions.view.problems', 'Quickfix List' },
   { 'n', '[q', 'editor.action.marker.prevInFiles', 'Previous Quickfix' },
@@ -307,17 +293,13 @@ local quickfix_mappings = {
   { 'n', ']e', 'editor.action.marker.next', 'Next Error' },
 }
 
--- ════════════════════════════════════════════════════════════════════════════
--- GIT
--- ════════════════════════════════════════════════════════════════════════════
+-- === GIT ===
 local git_mappings = {
   { 'n', '<leader>gg', 'workbench.view.scm', 'Git Status' },
   { 'n', '<leader>gG', 'git.openChange', 'Git Changes' },
 }
 
--- ════════════════════════════════════════════════════════════════════════════
--- APPLY ALL MAPPINGS
--- ════════════════════════════════════════════════════════════════════════════
+-- === APPLY ALL MAPPINGS ===
 apply_mappings(buffer_mappings)
 apply_mappings(code_mappings)
 apply_mappings(explorer_mappings)
