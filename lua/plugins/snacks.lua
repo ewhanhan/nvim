@@ -2,6 +2,7 @@ return {
   {
     'folke/snacks.nvim',
     -- Disable redundant (cwd) keymaps since root_spec = { 'cwd' }
+    -- Note: <leader>fT is a core keymap, disabled in config/keymaps.lua
     keys = {
       { '<leader>E', false },
       { '<leader>fE', false },
@@ -9,7 +10,6 @@ return {
       { '<leader>sG', false },
       { '<leader>fR', false },
       { '<leader>sW', false, mode = { 'n', 'x' } },
-      { '<leader>fT', false },
     },
     opts = {
       picker = {

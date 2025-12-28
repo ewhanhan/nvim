@@ -15,14 +15,10 @@ map(
 -- === KEYMAP OVERRIDES ===
 -- root_spec = { 'cwd' } makes (cwd) variants redundant
 -- Plugin keymaps disabled in lua/plugins/snacks.lua via keys = false
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'VeryLazy',
-  once = true,
-  callback = function()
-    pcall(vim.keymap.del, 'n', '<leader>gG') -- Lazygit (cwd)
-    pcall(vim.keymap.del, 'n', '<leader>gL') -- Git Log (cwd)
-  end,
-})
+-- Core keymaps deleted here (user config loads after LazyVim config)
+pcall(vim.keymap.del, 'n', '<leader>fT') -- Terminal (cwd)
+pcall(vim.keymap.del, 'n', '<leader>gG') -- Lazygit (cwd)
+pcall(vim.keymap.del, 'n', '<leader>gL') -- Git Log (cwd)
 
 -- === VSCODE INTEGRATION ===
 if vim.g.vscode then
