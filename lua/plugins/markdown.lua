@@ -15,4 +15,16 @@ return {
       },
     },
   },
+
+  -- Disable HTML comment concealing (render-markdown.nvim hides them by default)
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    opts = {
+      html = {
+        comment = {
+          conceal = false,
+        },
+      },
+    },
+  },
 }
