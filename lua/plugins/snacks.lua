@@ -42,10 +42,14 @@ return {
       picker = {
         actions = {
           copy_file_path = function(_, item, _)
-            if not item then return end
+            if not item then
+              return
+            end
 
             local file = item.file or item.text
-            if not file then return end
+            if not file then
+              return
+            end
 
             local vals = {
               ['BASENAME'] = vim.fn.fnamemodify(file, ':t:r'),
@@ -64,7 +68,9 @@ return {
 
             vim.ui.select(options, {
               prompt = 'Copy to clipboard:',
-              format_item = function(i) return ('%s: %s'):format(i, vals[i]) end,
+              format_item = function(i)
+                return ('%s: %s'):format(i, vals[i])
+              end,
             }, function(choice)
               if choice then
                 vim.fn.setreg('+', vals[choice])
@@ -74,9 +80,12 @@ return {
           end,
 
           search_in_directory = function(_, item, _)
-            if not item or not item.file then return end
+            if not item or not item.file then
+              return
+            end
             local path = vim.fn.fnamemodify(item.file, ':p')
-            local dir = vim.fn.isdirectory(path) == 1 and path or vim.fn.fnamemodify(path, ':h')
+            local dir = vim.fn.isdirectory(path) == 1 and path
+              or vim.fn.fnamemodify(path, ':h')
             Snacks.picker.grep({
               cwd = dir,
               exclude = { '.git', 'node_modules', 'dist', 'build', 'coverage' },
@@ -89,7 +98,9 @@ return {
           diff = function(picker, _, _)
             local sel = picker:selected()
             if #sel < 2 then
-              Snacks.notify.warn('Select two files for diff (use Tab to select)')
+              Snacks.notify.warn(
+                'Select two files for diff (use Tab to select)'
+              )
               return
             end
             local file1, file2 = sel[1].file, sel[2].file
@@ -132,7 +143,9 @@ return {
               ['D'] = 'diff',
             },
           },
-          input = { keys = { ['<C-y>'] = { 'copy_file_path', mode = { 'n', 'i' } } } },
+          input = {
+            keys = { ['<C-y>'] = { 'copy_file_path', mode = { 'n', 'i' } } },
+          },
         },
       },
     },
