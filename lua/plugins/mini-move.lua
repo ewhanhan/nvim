@@ -1,7 +1,7 @@
 -- Override mini.move to free <M-h> and <M-l> for smart-splits resize
 return {
   {
-    'echasnovski/mini.move',
+    'nvim-mini/mini.move',
     opts = {
       mappings = {
         -- Disable horizontal (conflicts with smart-splits resize)
