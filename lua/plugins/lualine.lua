@@ -4,7 +4,7 @@ return {
     opts = function(_, opts)
       -- Options
       opts.options.component_separators = ''
-      opts.options.section_separators = { left = '', right = '' }
+      opts.options.section_separators = { left = '', right = '' }
 
       vim.list_extend(opts.options.disabled_filetypes.statusline, {
         'snacks_terminal',
@@ -32,23 +32,13 @@ return {
 
       opts.sections.lualine_x = {}
       opts.sections.lualine_y = {
-
         {
           function()
             return ('Ln %d, Col %d'):format(vim.fn.line('.'), vim.fn.col('.'))
           end,
-          separator = {
-            left = '',
-            right = '',
-          },
         },
-
         {
           'filetype',
-          separator = {
-            left = '',
-            right = '',
-          },
           padding = 2,
         },
       }
