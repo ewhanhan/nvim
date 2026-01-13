@@ -127,7 +127,7 @@ return {
               list = {
                 keys = {
                   ['Y'] = 'copy_file_path',
-                  ['<C-y>'] = 'copy_file_path',
+                  ['<c-y>'] = 'copy_file_path',
                   ['s'] = 'search_in_directory',
                   ['D'] = 'diff',
                 },
@@ -139,14 +139,14 @@ return {
           list = {
             keys = {
               ['Y'] = 'copy_file_path',
-              ['<C-y>'] = 'copy_file_path',
+              ['<c-y>'] = 'copy_file_path',
               ['D'] = 'diff',
               ['<a-h>'] = false, -- Free for smart-splits resize (use H instead)
             },
           },
           input = {
             keys = {
-              ['<C-y>'] = { 'copy_file_path', mode = { 'n', 'i' } },
+              ['<c-y>'] = { 'copy_file_path', mode = { 'n', 'i' } },
               ['<a-h>'] = false, -- Free for smart-splits resize
             },
           },
