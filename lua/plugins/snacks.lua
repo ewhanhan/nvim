@@ -141,13 +141,11 @@ return {
               ['Y'] = 'copy_file_path',
               ['<C-y>'] = 'copy_file_path',
               ['D'] = 'diff',
-              ['<a-h>'] = false, -- Free for smart-splits resize (use H instead)
             },
           },
           input = {
             keys = {
               ['<C-y>'] = { 'copy_file_path', mode = { 'n', 'i' } },
-              ['<a-h>'] = false, -- Free for smart-splits resize
             },
           },
         },
