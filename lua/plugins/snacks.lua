@@ -39,6 +39,12 @@ return {
       { '<leader>sW', false, mode = { 'n', 'x' } },
     },
     opts = {
+      styles = {
+        lazygit = {
+          width = 0,
+          height = 0,
+        },
+      },
       picker = {
         actions = {
           copy_file_path = function(_, item, _)
