@@ -4,7 +4,6 @@ local g = vim.g
 local opt = vim.opt
 
 -- === LAZYVIM GLOBALS ===
-g.snacks_animate = false
 g.root_spec = { 'cwd' } -- Disable smart root detection, always use cwd
 g.trouble_lualine = false -- Custom lualine sections; don't inject symbols
 
