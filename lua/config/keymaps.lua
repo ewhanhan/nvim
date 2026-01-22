@@ -4,13 +4,10 @@
 local map = vim.keymap.set
 
 -- === CORE KEYMAPS ===
-map('n', '<leader>fw', '<cmd>w<cr>', { desc = 'Write buffer / save file' })
-map(
-  'n',
-  '<leader>fW',
-  '<cmd>wall<cr>',
-  { desc = 'Write all buffer(s) / save all file(s)' }
-)
+map({ 'n', 'v', 'o' }, 'H', '^', { desc = 'First non-blank' })
+map({ 'n', 'v', 'o' }, 'L', '$', { desc = 'End of line' })
+map('n', '<leader>fw', '<cmd>w<cr>', { desc = 'Write buffer' })
+map('n', '<leader>fW', '<cmd>wall<cr>', { desc = 'Write all buffers' })
 
 -- === KEYMAP OVERRIDES ===
 -- root_spec = { 'cwd' } makes (cwd) variants redundant
