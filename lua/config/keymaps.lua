@@ -4,14 +4,12 @@
 local map = vim.keymap.set
 
 -- === CORE KEYMAPS ===
-map({ 'n', 'v', 'o' }, 'H', '^', { desc = 'First non-blank' })
-map({ 'n', 'v', 'o' }, 'L', '$', { desc = 'End of line' })
 map('n', '<leader>fw', '<cmd>w<cr>', { desc = 'Write buffer' })
 map('n', '<leader>fW', '<cmd>wall<cr>', { desc = 'Write all buffers' })
 
 -- === KEYMAP OVERRIDES ===
 -- root_spec = { 'cwd' } makes (cwd) variants redundant
--- Plugin keymaps disabled in lua/plugins/snacks.lua via keys = false
+-- Plugin keymaps disabled in lua/plugins/
 -- Core keymaps deleted here (user config loads after LazyVim config)
 pcall(vim.keymap.del, 'n', '<leader>fT') -- Terminal (cwd)
 pcall(vim.keymap.del, 'n', '<leader>gG') -- Lazygit (cwd)
