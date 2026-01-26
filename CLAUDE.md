@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 LazyVim-based Neovim configuration with tmux integration and VSCode compatibility.
 
-**LazyVim source**: `~/.local/share/nvim/lazy/LazyVim/` — check here for default plugin specs and behavior.
+**Plugin sources**: `~/.local/share/nvim/lazy/<plugin>/` — check actual source before claiming what a plugin does. LazyVim defaults are in `LazyVim/lua/lazyvim/plugins/`.
 
 ## Development Commands
 
