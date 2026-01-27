@@ -43,6 +43,9 @@ return {
         lazygit = {
           width = 0,
           height = 0,
+          wo = {
+            winhighlight = 'Normal:Normal',
+          },
         },
       },
       picker = {
