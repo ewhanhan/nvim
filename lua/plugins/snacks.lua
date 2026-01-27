@@ -1,7 +1,7 @@
 -- === SNACKS ===
 --
 -- Custom actions (this config):
---   Y / <C-y>   copy_file_path        Select format to yank (cwd, home, uri, etc.)
+--   Y           copy_file_path        Select format to yank (cwd, home, uri, etc.)
 --   s           search_in_directory   Grep within directory (explorer only)
 --   D           diff                  Diff two Tab-selected files
 --
@@ -141,7 +141,6 @@ return {
               list = {
                 keys = {
                   ['Y'] = 'copy_file_path',
-                  ['<C-y>'] = { 'copy_file_path', mode = { 'n', 'i' } },
                   ['s'] = 'search_in_directory',
                   ['D'] = 'diff',
                 },
@@ -153,13 +152,7 @@ return {
           list = {
             keys = {
               ['Y'] = 'copy_file_path',
-              ['<C-y>'] = 'copy_file_path',
               ['D'] = 'diff',
-            },
-          },
-          input = {
-            keys = {
-              ['<C-y>'] = { 'copy_file_path', mode = { 'n', 'i' } },
             },
           },
         },
