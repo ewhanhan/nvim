@@ -151,8 +151,8 @@ return {
         win = {
           input = {
             keys = {
-              ['Y'] = { 'copy_file_path', mode = { 'n', 'i' } },
-              ['D'] = { 'diff', mode = { 'n', 'i' } },
+              ['Y'] = 'copy_file_path',
+              ['D'] = 'diff',
             },
           },
           list = {
