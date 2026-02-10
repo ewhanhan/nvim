@@ -6,6 +6,7 @@ local opt = vim.opt
 -- === LAZYVIM GLOBALS ===
 g.root_spec = { 'cwd' } -- Disable smart root detection, always use cwd
 g.trouble_lualine = false -- Custom lualine sections; don't inject symbols
+g.snacks_animate = false -- Disable all snacks animations (scroll, indent, etc.)
 
 -- === EDITOR OPTIONS ===
 opt.exrc = true -- Project-local .nvim.lua/.lazy.lua config files
