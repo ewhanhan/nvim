@@ -133,6 +133,14 @@ return {
             hidden = true,
             ignored = false,
           },
+          grep = {
+            hidden = true,
+            ignored = false,
+          },
+          grep_word = {
+            hidden = true,
+            ignored = false,
+          },
           explorer = {
             hidden = true,
             ignored = false,
