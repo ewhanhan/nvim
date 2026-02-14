@@ -40,13 +40,6 @@ return {
       keymaps = {
         show_help = '<f1>',
       },
-      -- Cap floating window width at 90 columns and center horizontally
-      hooks = {
-        before_opening_window = function(win_opts)
-          win_opts.width = math.min(90, vim.o.columns - 6)
-          win_opts.col = math.floor((vim.o.columns - win_opts.width) / 2)
-        end,
-      },
     },
     init = function()
       -- Prevent netrw from loading since yazi handles directories
