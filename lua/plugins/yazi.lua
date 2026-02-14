@@ -1,3 +1,15 @@
+-- === YAZI ===
+--
+-- File explorer using yazi terminal file manager (replaces snacks explorer).
+--
+-- Keymaps:
+--   <leader>e     Explorer Yazi (current file)
+--   <leader>E     Explorer Yazi (cwd)
+--   <leader>fe    Explorer Yazi (current file)
+--   <leader>fE    Explorer Yazi (cwd)
+--   <leader>-     Open yazi in cwd
+--   <C-Up>        Resume last yazi session
+
 return {
   {
     'mikavilpas/yazi.nvim',
@@ -6,17 +18,16 @@ return {
       { 'nvim-lua/plenary.nvim', lazy = true },
     },
     keys = {
-      -- Explorer replacements (previously snacks explorer)
-      { '<leader>e', '<cmd>Yazi<cr>', desc = 'Explorer (Yazi)' },
-      { '<leader>fe', '<cmd>Yazi<cr>', desc = 'Explorer (Yazi)' },
-      -- Yazi.nvim defaults
+      { '<leader>e', '<cmd>Yazi<cr>', desc = 'Explorer Yazi' },
+      { '<leader>E', '<cmd>Yazi cwd<cr>', desc = 'Explorer Yazi (cwd)' },
+      { '<leader>fe', '<cmd>Yazi<cr>', desc = 'Explorer Yazi' },
+      { '<leader>fE', '<cmd>Yazi cwd<cr>', desc = 'Explorer Yazi (cwd)' },
       {
         '<leader>-',
         mode = { 'n', 'v' },
-        '<cmd>Yazi<cr>',
-        desc = 'Open yazi at current file',
+        '<cmd>Yazi cwd<cr>',
+        desc = 'Open yazi in cwd',
       },
-      { '<leader>cw', '<cmd>Yazi cwd<cr>', desc = 'Open yazi in cwd' },
       {
         '<c-up>',
         '<cmd>Yazi toggle<cr>',
