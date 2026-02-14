@@ -32,11 +32,6 @@ return {
             winhighlight = 'Normal:Normal',
           },
         },
-        terminal = {
-          wo = {
-            winhighlight = 'NormalFloat:Normal',
-          },
-        },
       },
       picker = {
         actions = {
