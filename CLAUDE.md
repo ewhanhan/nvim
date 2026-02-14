@@ -42,7 +42,9 @@ vscode-neovim sets `vim.g.vscode` automatically before init.lua runs:
 
 **Smart-splits Non-Lazy**: `lua/plugins/smart-splits.lua` uses `lazy = false` - critical for immediate tmux navigation. Don't change this.
 
-**Snacks Replaces Telescope**: File picker/explorer via snacks.nvim with hidden files visible by default.
+**Snacks Replaces Telescope**: File picker via snacks.nvim with hidden files visible by default.
+
+**Yazi Primary Explorer**: `lua/plugins/yazi.lua` is the primary file explorer when `yazi` is installed (`enabled = vim.fn.executable('yazi') == 1`). Falls back to `snacks_explorer` extra when yazi is absent. Snacks explorer keymaps (`fe`, `fE`) are conditionally disabled in `snacks.lua` only when yazi is available.
 
 **Project-Local Config**: `opt.exrc = true` enables `.nvim.lua`/`.lazy.lua` files per project.
 
@@ -92,6 +94,7 @@ Use `keys = {}` to disable all keymaps, or `keys = function() return {...} end` 
 | VSCode        | `vscode-keymaps.lua` | LazyVim parity for VSCode Neovim                           |
 | Wakatime      | `wakatime.lua`       | Non-lazy for accurate tracking                             |
 | Markdown lint | `markdown.lua`       | Uses global `~/.markdownlint.jsonc`                        |
+| Yazi          | `yazi.lua`           | Primary explorer; falls back to snacks_explorer            |
 | Surround      | `surround.lua`       | Visual `S` overrides flash; use `<c-space>` for treesitter |
 
 ## File Formatting Standards

@@ -12,17 +12,28 @@
 --   HELP:         ? (show all keybindings)
 --
 -- Disabled: fF, sG, fR, sW (redundant with root_spec = cwd)
+-- Disabled: fe, fE (when yazi is installed; snacks_explorer is fallback)
 -- Hidden files: enabled by default in picker
 --
+local has_yazi = vim.fn.executable('yazi') == 1
+
+local keys = {
+  { '<leader>fF', false },
+  { '<leader>sG', false },
+  { '<leader>fR', false },
+  { '<leader>sW', false, mode = { 'n', 'x' } },
+}
+if has_yazi then
+  vim.list_extend(keys, {
+    { '<leader>fe', false },
+    { '<leader>fE', false },
+  })
+end
+
 return {
   {
     'folke/snacks.nvim',
-    keys = {
-      { '<leader>fF', false },
-      { '<leader>sG', false },
-      { '<leader>fR', false },
-      { '<leader>sW', false, mode = { 'n', 'x' } },
-    },
+    keys = keys,
     opts = {
       styles = {
         lazygit = {

@@ -1,6 +1,7 @@
 -- === YAZI ===
 --
--- File explorer using yazi terminal file manager (replaces snacks explorer).
+-- Primary file explorer using yazi terminal file manager.
+-- Falls back to snacks_explorer when yazi is not installed.
 --
 -- Keymaps:
 --   <leader>e     Explorer Yazi (current file)
@@ -13,6 +14,7 @@
 return {
   {
     'mikavilpas/yazi.nvim',
+    enabled = vim.fn.executable('yazi') == 1,
     event = 'VeryLazy',
     dependencies = {
       { 'nvim-lua/plenary.nvim', lazy = true },
@@ -34,6 +36,10 @@ return {
         desc = 'Resume last yazi session',
       },
     },
+    init = function()
+      -- Prevent netrw from loading since yazi handles directories
+      vim.g.loaded_netrwPlugin = 1
+    end,
     ---@type YaziConfig
     opts = {
       open_for_directories = true,
@@ -41,9 +47,5 @@ return {
         show_help = '<f1>',
       },
     },
-    init = function()
-      -- Prevent netrw from loading since yazi handles directories
-      vim.g.loaded_netrwPlugin = 1
-    end,
   },
 }
