@@ -17,6 +17,20 @@
 --
 local has_yazi = vim.fn.executable('yazi') == 1
 
+-- stylua: ignore
+local dashboard_keys = {
+  { icon = ' ', key = 'f', desc = 'Find File',       action = ":lua Snacks.dashboard.pick('files')" },
+  { icon = ' ', key = 'r', desc = 'Recent Files',    action = ":lua Snacks.dashboard.pick('oldfiles')" },
+  { icon = ' ', key = 'p', desc = 'Projects',        action = ":lua Snacks.dashboard.pick('projects')" },
+  { icon = ' ', key = '/', desc = 'Find Text',       action = ":lua Snacks.dashboard.pick('live_grep')" },
+  { icon = '󰇥 ', key = 'e', desc = 'File Explorer',  action = ':lua require("yazi").yazi()', enabled = has_yazi },
+  { icon = ' ', key = 's', desc = 'Restore Session', section = 'session' },
+  { icon = '󰊢 ', key = 'g', desc = 'Lazygit',        action = ':lua Snacks.lazygit()' },
+  { icon = ' ', key = 'x', desc = 'Lazy Extras',     action = ':LazyExtras' },
+  { icon = '󰒲 ', key = 'l', desc = 'Lazy',            action = ':Lazy' },
+  { icon = ' ', key = 'q', desc = 'Quit',            action = ':qa' },
+}
+
 local keys = {
   { '<leader>fF', false },
   { '<leader>sG', false },
@@ -37,6 +51,13 @@ return {
     'folke/snacks.nvim',
     keys = keys,
     opts = {
+      dashboard = {
+        preset = { keys = dashboard_keys },
+        sections = {
+          { section = 'header' },
+          { section = 'keys', gap = 1, padding = 1 },
+        },
+      },
       terminal = {
         win = {
           keys = {
@@ -59,7 +80,7 @@ return {
       },
       picker = {
         actions = {
-          copy_file_path = function(_, item, _)
+          copy_file_path = function(_, item)
             if not item then
               return
             end
@@ -97,7 +118,7 @@ return {
             end)
           end,
 
-          diff = function(picker, _, _)
+          diff = function(picker)
             local sel = picker:selected()
             if #sel < 2 then
               Snacks.notify.warn(
