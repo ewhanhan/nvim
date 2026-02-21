@@ -43,14 +43,14 @@ return {
       desc = 'Move to Previous Split/Pane',
       mode = 'n',
     },
-    -- Resizing
+    -- Resizing (also in terminal mode for snacks terminals)
     {
       '<M-h>',
       function()
         require('smart-splits').resize_left()
       end,
       desc = 'Resize Split Left',
-      mode = 'n',
+      mode = { 'n', 't' },
     },
     {
       '<M-j>',
@@ -58,7 +58,7 @@ return {
         require('smart-splits').resize_down()
       end,
       desc = 'Resize Split Down',
-      mode = 'n',
+      mode = { 'n', 't' },
     },
     {
       '<M-k>',
@@ -66,7 +66,7 @@ return {
         require('smart-splits').resize_up()
       end,
       desc = 'Resize Split Up',
-      mode = 'n',
+      mode = { 'n', 't' },
     },
     {
       '<M-l>',
@@ -74,7 +74,7 @@ return {
         require('smart-splits').resize_right()
       end,
       desc = 'Resize Split Right',
-      mode = 'n',
+      mode = { 'n', 't' },
     },
   },
 }
