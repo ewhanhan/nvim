@@ -9,7 +9,7 @@ return {
         require('smart-splits').move_cursor_left()
       end,
       desc = 'Move to Left Split/Pane',
-      mode = 'n',
+      mode = { 'n', 't' },
     },
     {
       '<C-j>',
@@ -17,7 +17,7 @@ return {
         require('smart-splits').move_cursor_down()
       end,
       desc = 'Move to Lower Split/Pane',
-      mode = 'n',
+      mode = { 'n', 't' },
     },
     {
       '<C-k>',
@@ -25,7 +25,7 @@ return {
         require('smart-splits').move_cursor_up()
       end,
       desc = 'Move to Upper Split/Pane',
-      mode = 'n',
+      mode = { 'n', 't' },
     },
     {
       '<C-l>',
@@ -33,7 +33,7 @@ return {
         require('smart-splits').move_cursor_right()
       end,
       desc = 'Move to Right Split/Pane',
-      mode = 'n',
+      mode = { 'n', 't' },
     },
     {
       '<C-\\>',
@@ -41,7 +41,7 @@ return {
         require('smart-splits').move_cursor_previous()
       end,
       desc = 'Move to Previous Split/Pane',
-      mode = 'n',
+      mode = { 'n', 't' },
     },
     -- Resizing (also in terminal mode for snacks terminals)
     {
