@@ -1,4 +1,4 @@
-local active_colorscheme = 'gruvbox-material' -- 'gruvbox' or 'gruvbox-material'
+local active_colorscheme = 'gruvbox-material' -- 'gruvbox' or 'gruvbox-material' SYNC(theme)
 
 return {
   {
