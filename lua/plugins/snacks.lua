@@ -25,6 +25,8 @@ local keys = {
 }
 if has_yazi then
   vim.list_extend(keys, {
+    { '<leader>e', false },
+    { '<leader>E', false },
     { '<leader>fe', false },
     { '<leader>fE', false },
   })
@@ -35,6 +37,7 @@ return {
     'folke/snacks.nvim',
     keys = keys,
     opts = {
+      explorer = has_yazi and { enabled = false } or nil,
       styles = {
         lazygit = {
           width = 0,
