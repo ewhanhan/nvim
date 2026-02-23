@@ -92,7 +92,6 @@ Use `keys = {}` to disable all keymaps, or `keys = function() return {...} end` 
 | ------------- | -------------------- | ---------------------------------------------------------- |
 | Tmux nav      | `smart-splits.lua`   | `Ctrl+h/j/k/l` across nvim/tmux                            |
 | VSCode        | `vscode-keymaps.lua` | LazyVim parity for VSCode Neovim                           |
-| Wakatime      | `wakatime.lua`       | Non-lazy for accurate tracking                             |
 | Markdown lint | `markdown.lua`       | Uses global `~/.markdownlint.jsonc`                        |
 | Yazi          | `yazi.lua`           | Primary explorer; falls back to snacks_explorer            |
 | Surround      | `surround.lua`       | Visual `S` overrides flash; use `<c-space>` for treesitter |
