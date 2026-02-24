@@ -7,6 +7,11 @@ return {
   {
     'folke/which-key.nvim',
     opts = {
+      icons = {
+        rules = {
+          { plugin = 'yazi.nvim', icon = '󰇥 ', color = 'yellow' },
+        },
+      },
       filter = function(mapping)
         -- Keymaps to hide from which-key popup (mappings still work)
         -- Leader resolves to space in lhs
