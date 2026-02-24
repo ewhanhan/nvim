@@ -13,6 +13,7 @@
 --
 -- Disabled: fF, sG, fR, sW (redundant with root_spec = cwd)
 -- Disabled: fe, fE (when yazi is installed; snacks_explorer is fallback)
+-- Disabled: <leader>. , <leader>S (scratch buffers)
 -- Hidden files: enabled by default in picker
 --
 local has_yazi = vim.fn.executable('yazi') == 1
@@ -23,9 +24,9 @@ local dashboard_keys = {
   { icon = ' ', key = 'r', desc = 'Recent Files',    action = ":lua Snacks.dashboard.pick('oldfiles')" },
   { icon = ' ', key = 'p', desc = 'Projects',        action = ":lua Snacks.dashboard.pick('projects')" },
   { icon = ' ', key = '/', desc = 'Find Text',       action = ":lua Snacks.dashboard.pick('live_grep')" },
-  { icon = '󰇥 ', key = 'e', desc = 'File Explorer',  action = ':lua require("yazi").yazi()', enabled = has_yazi },
+  { icon = '󰇥 ', key = 'e', desc = 'File Explorer',   action = ':lua require("yazi").yazi()', enabled = has_yazi },
   { icon = ' ', key = 's', desc = 'Restore Session', section = 'session' },
-  { icon = '󰊢 ', key = 'g', desc = 'Lazygit',        action = ':lua Snacks.lazygit()' },
+  { icon = '󰊢 ', key = 'g', desc = 'Lazygit',         action = ':lua Snacks.lazygit()' },
   { icon = ' ', key = 'x', desc = 'Lazy Extras',     action = ':LazyExtras' },
   { icon = '󰒲 ', key = 'l', desc = 'Lazy',            action = ':Lazy' },
   { icon = ' ', key = 'q', desc = 'Quit',            action = ':qa' },
@@ -36,6 +37,8 @@ local keys = {
   { '<leader>sG', false },
   { '<leader>fR', false },
   { '<leader>sW', false, mode = { 'n', 'x' } },
+  { '<leader>.', false },
+  { '<leader>S', false },
 }
 if has_yazi then
   vim.list_extend(keys, {
