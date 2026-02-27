@@ -1,11 +1,7 @@
 -- Fix: LazyVim extra hardcodes chezmoi#source_dir_path, bypassing
--- .chezmoiroot and custom sourceDir. Resolve source directory via
--- `chezmoi source-path` with file-read fallback.
+-- .chezmoiroot. Resolve source directory via file read to avoid a
+-- synchronous shell fork during startup.
 local source_dir = (function()
-  local out = vim.fn.system('chezmoi source-path')
-  if vim.v.shell_error == 0 then
-    return vim.trim(out)
-  end
   local base = vim.fs.normalize(vim.env.HOME .. '/.local/share/chezmoi')
   local f = io.open(base .. '/.chezmoiroot', 'r')
   if f then
