@@ -76,9 +76,6 @@ return {
         lazygit = {
           width = 0,
           height = 0,
-          wo = {
-            winhighlight = 'Normal:Normal',
-          },
         },
       },
       picker = {
@@ -143,15 +140,6 @@ return {
         sources = {
           files = {
             hidden = true,
-            ignored = false,
-          },
-          grep = {
-            hidden = true,
-            ignored = false,
-          },
-          grep_word = {
-            hidden = true,
-            ignored = false,
           },
         },
         win = {
