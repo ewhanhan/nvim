@@ -11,6 +11,4 @@ g.snacks_animate = false -- Disable all snacks animations (scroll, indent, etc.)
 -- === EDITOR OPTIONS ===
 opt.exrc = true -- Project-local .nvim.lua/.lazy.lua config files
 opt.swapfile = false
-opt.incsearch = true
-opt.spell = false
 opt.colorcolumn = '80'
