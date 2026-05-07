@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-LazyVim-based Neovim configuration with tmux integration and VSCode compatibility.
+LazyVim-based Neovim configuration with tmux integration.
 
 **Plugin sources**: `~/.local/share/nvim/lazy/<plugin>/` — check actual source before claiming what a plugin does. LazyVim defaults are in `LazyVim/lua/lazyvim/plugins/`.
 
@@ -28,13 +28,6 @@ nvim --headless -c 'map' -c 'qa!' 2>&1
 ```
 
 ## Architecture
-
-### Dual-Editor Mode
-
-vscode-neovim sets `vim.g.vscode` automatically before init.lua runs:
-
-- **Terminal Neovim**: Full config with smart-splits tmux integration
-- **VSCode Neovim**: Minimal config with `lua/config/vscode-keymaps.lua`
 
 ### Key Design Decisions
 
@@ -88,13 +81,12 @@ Use `keys = {}` to disable all keymaps, or `keys = function() return {...} end` 
 
 ## Key Integrations
 
-| Integration   | Config Location      | Notes                                                      |
-| ------------- | -------------------- | ---------------------------------------------------------- |
-| Tmux nav      | `smart-splits.lua`   | `Ctrl+h/j/k/l` across nvim/tmux                            |
-| VSCode        | `vscode-keymaps.lua` | LazyVim parity for VSCode Neovim                           |
-| Markdown lint | `markdown.lua`       | Uses global `~/.markdownlint.jsonc`                        |
-| Yazi          | `yazi.lua`           | Primary explorer; falls back to snacks_explorer            |
-| Surround      | `surround.lua`       | Visual `S` overrides flash; use `<c-space>` for treesitter |
+| Integration   | Config Location    | Notes                                                      |
+| ------------- | ------------------ | ---------------------------------------------------------- |
+| Tmux nav      | `smart-splits.lua` | `Ctrl+h/j/k/l` across nvim/tmux                            |
+| Markdown lint | `markdown.lua`     | Uses global `~/.markdownlint.jsonc`                        |
+| Yazi          | `yazi.lua`         | Primary explorer; falls back to snacks_explorer            |
+| Surround      | `surround.lua`     | Visual `S` overrides flash; use `<c-space>` for treesitter |
 
 ## File Formatting Standards
 
@@ -108,5 +100,4 @@ Use `keys = {}` to disable all keymaps, or `keys = function() return {...} end` 
 
 - **Don't lazy-load smart-splits** - breaks tmux integration
 - **Keep `root_spec = { 'cwd' }`** - many keymaps depend on this
-- **VSCode keymaps are separate** - changes to `keymaps.lua` won't affect VSCode mode
 - **Plugin versions unlocked** - uses latest, not pinned versions

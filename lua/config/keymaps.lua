@@ -14,8 +14,3 @@ map('n', '<leader>fW', '<cmd>wall<cr>', { desc = 'Write all buffers' })
 pcall(vim.keymap.del, 'n', '<leader>fT') -- Terminal (cwd)
 pcall(vim.keymap.del, 'n', '<leader>gG') -- Lazygit (cwd)
 pcall(vim.keymap.del, 'n', '<leader>gL') -- Git Log (cwd)
-
--- === VSCODE INTEGRATION ===
-if vim.g.vscode then
-  require('config.vscode-keymaps')
-end
