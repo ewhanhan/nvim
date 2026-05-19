@@ -141,6 +141,12 @@ return {
           files = {
             hidden = true,
           },
+          buffers = {
+            format = function(item, picker)
+              local ret = Snacks.picker.format.buffer(item, picker)
+              return vim.list_slice(ret, 3)
+            end,
+          },
         },
         win = {
           input = {
