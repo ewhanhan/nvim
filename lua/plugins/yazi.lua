@@ -15,7 +15,7 @@ return {
   {
     'mikavilpas/yazi.nvim',
     version = '*',
-    enabled = vim.fn.executable('yazi') == 1,
+    enabled = vim.g.use_yazi,
     event = 'VeryLazy',
     dependencies = {
       { 'nvim-lua/plenary.nvim', lazy = true },
