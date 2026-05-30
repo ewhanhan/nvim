@@ -141,6 +141,9 @@ return {
           files = {
             hidden = true,
           },
+          explorer = {
+            hidden = true,
+          },
           buffers = {
             format = function(item, picker)
               local ret = Snacks.picker.format.buffer(item, picker)
