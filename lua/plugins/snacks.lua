@@ -147,6 +147,20 @@ return {
               return vim.list_slice(ret, 3)
             end,
           },
+          notifications = {
+            win = {
+              input = {
+                keys = {
+                  ['<c-y>'] = { 'yank', mode = { 'n', 'i' } },
+                },
+              },
+              list = {
+                keys = {
+                  ['y'] = { 'yank', mode = { 'n', 'x' } },
+                },
+              },
+            },
+          },
         },
         win = {
           input = {
