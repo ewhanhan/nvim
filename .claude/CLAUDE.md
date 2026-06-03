@@ -81,12 +81,12 @@ Use `keys = {}` to disable all keymaps, or `keys = function() return {...} end` 
 
 ## Key Integrations
 
-| Integration   | Config Location    | Notes                                                      |
-| ------------- | ------------------ | ---------------------------------------------------------- |
-| Tmux nav      | `smart-splits.lua` | `Ctrl+h/j/k/l` across nvim/tmux                            |
-| Markdown lint | `markdown.lua`     | Uses global `~/.markdownlint.jsonc`                        |
-| Yazi          | `yazi.lua`         | Primary explorer; falls back to snacks_explorer            |
-| Surround      | `surround.lua`     | Visual `S` overrides flash; use `<c-space>` for treesitter |
+| Integration   | Config Location                | Notes                                                      |
+| ------------- | ------------------------------ | ---------------------------------------------------------- |
+| Tmux nav      | `smart-splits.lua`             | `Ctrl+h/j/k/l` across nvim/tmux                            |
+| Markdown lint | `markdown.lua`                 | Uses global `~/.markdownlint.jsonc`                        |
+| Yazi          | `yazi.lua`                     | Primary explorer; falls back to snacks_explorer            |
+| Surround      | `surround.lua` (nvim-surround) | Visual `S` overrides flash; use `<c-space>` for treesitter |
 
 ## File Formatting Standards
 
