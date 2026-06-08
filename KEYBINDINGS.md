@@ -1,4 +1,4 @@
-# TIPS.md
+# keybindings and Tips
 
 Custom keybindings and tips for this LazyVim configuration.
 
