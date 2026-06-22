@@ -39,6 +39,11 @@ local keys = {
   { '<leader>sW', false, mode = { 'n', 'x' } },
   { '<leader>.', false },
   { '<leader>S', false },
+  -- GitHub issue/PR pickers (snacks_picker extra)
+  { '<leader>gi', false },
+  { '<leader>gI', false },
+  { '<leader>gp', false },
+  { '<leader>gP', false },
 }
 if use_yazi then
   vim.list_extend(keys, {
