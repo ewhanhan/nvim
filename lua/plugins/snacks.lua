@@ -12,11 +12,9 @@
 --   HELP:         ? (show all keybindings)
 --
 -- Disabled: fF, sG, fR, sW (redundant with root_spec = cwd)
--- Disabled: fe, fE (when yazi is installed; snacks_explorer is fallback)
 -- Disabled: <leader>. , <leader>S (scratch buffers)
 -- Hidden files: enabled by default in picker
 --
-local use_yazi = vim.g.use_yazi
 
 -- stylua: ignore
 local dashboard_keys = {
@@ -24,7 +22,7 @@ local dashboard_keys = {
   { icon = ' ', key = 'r', desc = 'Recent Files',    action = ":lua Snacks.dashboard.pick('oldfiles')" },
   { icon = ' ', key = 'p', desc = 'Projects',        action = ":lua Snacks.dashboard.pick('projects')" },
   { icon = ' ', key = '/', desc = 'Find Text',       action = ":lua Snacks.dashboard.pick('live_grep')" },
-  { icon = '󰇥 ', key = 'e', desc = 'File Explorer',   action = ':lua require("yazi").yazi()', enabled = use_yazi },
+  { icon = '󰙅', key = 'e', desc = 'File Explorer',   action = ':lua Snacks.explorer()' },
   { icon = ' ', key = 's', desc = 'Restore Session', section = 'session' },
   { icon = '󰊢 ', key = 'g', desc = 'Lazygit',         action = ':lua Snacks.lazygit()' },
   { icon = ' ', key = 'x', desc = 'Lazy Extras',     action = ':LazyExtras' },
@@ -45,14 +43,6 @@ local keys = {
   { '<leader>gp', false },
   { '<leader>gP', false },
 }
-if use_yazi then
-  vim.list_extend(keys, {
-    { '<leader>e', false },
-    { '<leader>E', false },
-    { '<leader>fe', false },
-    { '<leader>fE', false },
-  })
-end
 
 return {
   {
@@ -76,7 +66,6 @@ return {
           },
         },
       },
-      explorer = use_yazi and { enabled = false } or nil,
       styles = {
         lazygit = {
           width = 0,

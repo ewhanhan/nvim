@@ -10,7 +10,6 @@ return {
         'snacks_terminal',
         'snacks_picker_input',
         'snacks_picker_list',
-        'yazi',
       })
 
       -- Relocate filetype from lualine_c to lualine_y with bubble separators

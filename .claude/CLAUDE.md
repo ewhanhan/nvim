@@ -37,7 +37,7 @@ nvim --headless -c 'map' -c 'qa!' 2>&1
 
 **Snacks Replaces Telescope**: File picker via snacks.nvim with hidden files visible by default.
 
-**Yazi Primary Explorer**: `lua/plugins/yazi.lua` is the primary file explorer when `yazi` is installed (`enabled = vim.fn.executable('yazi') == 1`). Falls back to `snacks_explorer` extra when yazi is absent. Snacks explorer keymaps (`fe`, `fE`) are conditionally disabled in `snacks.lua` only when yazi is available.
+**Snacks File Explorer**: The `snacks_explorer` extra is the file explorer (`<leader>e`/`E`/`fe`/`fE`), with hidden files visible by default. The dashboard `e` key opens it via `Snacks.explorer()`.
 
 **Project-Local Config**: `opt.exrc = true` enables `.nvim.lua`/`.lazy.lua` files per project.
 
@@ -85,7 +85,6 @@ Use `keys = {}` to disable all keymaps, or `keys = function() return {...} end` 
 | ------------- | ------------------------------ | ---------------------------------------------------------- |
 | Tmux nav      | `smart-splits.lua`             | `Ctrl+h/j/k/l` across nvim/tmux                            |
 | Markdown lint | `markdown.lua`                 | Uses global `~/.markdownlint.jsonc`                        |
-| Yazi          | `yazi.lua`                     | Primary explorer; falls back to snacks_explorer            |
 | Surround      | `surround.lua` (nvim-surround) | Visual `S` overrides flash; use `<c-space>` for treesitter |
 
 ## File Formatting Standards
