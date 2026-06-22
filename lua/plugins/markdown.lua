@@ -4,16 +4,20 @@ return {
   {
     'mfussenegger/nvim-lint',
     optional = true,
-    opts = {
-      linters = {
-        ['markdownlint-cli2'] = {
-          prepend_args = {
-            '--config',
-            vim.fn.expand('~/.markdownlint-cli2.jsonc'),
-          },
-        },
-      },
-    },
+    opts = function(_, opts)
+      -- Only force the global config when it actually exists, so markdown
+      -- linting doesn't break on machines where the dotfile isn't present.
+      local config = vim.fs.normalize('~/.markdownlint-cli2.jsonc')
+      if vim.uv.fs_stat(config) then
+        opts.linters = opts.linters or {}
+        opts.linters['markdownlint-cli2'] = vim.tbl_deep_extend(
+          'force',
+          opts.linters['markdownlint-cli2'] or {},
+          { prepend_args = { '--config', config } }
+        )
+      end
+      return opts
+    end,
   },
 
   -- Disable HTML comment concealing (render-markdown.nvim hides them by default)
