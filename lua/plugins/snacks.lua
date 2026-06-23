@@ -35,8 +35,6 @@ local keys = {
   { '<leader>sG', false },
   { '<leader>fR', false },
   { '<leader>sW', false, mode = { 'n', 'x' } },
-  { '<leader>.', false },
-  { '<leader>S', false },
   -- GitHub issue/PR pickers (snacks_picker extra)
   { '<leader>gi', false },
   { '<leader>gI', false },
