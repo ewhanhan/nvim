@@ -20,10 +20,23 @@ return {
     end,
   },
 
-  -- Disable HTML comment concealing (render-markdown.nvim hides them by default)
+  -- render-markdown.nvim tweaks
   {
     'MeanderingProgrammer/render-markdown.nvim',
     opts = {
+      -- In-process LSP completions for callouts ([!NOTE]) and checkbox states.
+      -- Rides on blink.cmp (LazyVim's default engine), no extra source needed.
+      completions = { lsp = { enabled = true } },
+      -- Repeat the quote bar on wrapped lines of block quotes & callouts.
+      -- The window options are scoped to rendered view so they don't leak
+      -- globally; they revert to 'default' in insert/visual mode.
+      quote = { repeat_linebreak = true },
+      win_options = {
+        showbreak = { default = '', rendered = '  ' }, -- align past the '▋ '
+        breakindent = { default = false, rendered = true },
+        breakindentopt = { default = '', rendered = '' },
+      },
+      -- Don't conceal HTML comments (render-markdown hides them by default).
       html = {
         comment = {
           conceal = false,
