@@ -33,7 +33,10 @@ return {
       opts.sections.lualine_y = {
         {
           function()
-            return ('Ln %d, Col %d'):format(vim.fn.line('.'), vim.fn.col('.'))
+            return ('Ln %d, Col %d'):format(
+              vim.fn.line('.'),
+              vim.fn.charcol('.')
+            )
           end,
         },
         {
