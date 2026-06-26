@@ -12,16 +12,25 @@ return {
         'snacks_picker_list',
       })
 
-      -- Relocate filetype from lualine_c to lualine_y with bubble separators
-      for i, c in ipairs(opts.sections.lualine_c) do
-        local name = type(c) == 'table' and c[1] or c
-        if name == 'filetype' then
-          table.remove(opts.sections.lualine_c, i)
-          break
-        end
-      end
-
       -- Sections
+      -- lualine_c: keep LazyVim's root_dir + diagnostics; filetype is moved to
+      -- lualine_y, and pretty_path shows a dot for modified buffers.
+      local icons = LazyVim.config.icons
+      opts.sections.lualine_c = {
+        LazyVim.lualine.root_dir(),
+        {
+          'diagnostics',
+          always_visible = true,
+          symbols = {
+            error = icons.diagnostics.Error,
+            warn = icons.diagnostics.Warn,
+            info = icons.diagnostics.Info,
+            hint = icons.diagnostics.Hint,
+          },
+        },
+        { LazyVim.lualine.pretty_path({ modified_sign = ' ●' }) },
+      }
+
       opts.sections.lualine_a = {
         {
           'mode',
