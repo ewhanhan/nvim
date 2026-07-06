@@ -1,5 +1,5 @@
 -- Amansingh-afk/milli.nvim: animated ASCII splash on the snacks dashboard.
-local SPLASH = 'dancer'
+local SPLASH = 'dancerramp'
 
 return {
   {
