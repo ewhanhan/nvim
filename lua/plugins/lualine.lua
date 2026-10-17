@@ -60,7 +60,6 @@ return {
         'trouble',
         'quickfix',
         'mason',
-        'nvim-dap-ui',
         'man',
       })
       return opts
