@@ -1,0 +1,122 @@
+# selene standard library for Neovim Lua, loaded by `std = "vim"` in
+# selene.toml. Based on the vim.yml LazyVim, lazy.nvim, and snacks.nvim ship.
+#
+# Typed: `bit` and `jit`, LuaJIT's frozen built-ins (arities checked against
+# the runtime). Untyped (`any`): `vim`, `Snacks`, `LazyVim`; their APIs are
+# large and change on every update, and lua_ls (via lazydev) type-checks them
+# from their own annotations. `lpeg` is undefined on purpose: Neovim documents
+# it only as `vim.lpeg`.
+#
+# No `lua_versions: [luajit]`: official selene builds don't compile that
+# dialect in (selene prints an error and falls back to 5.1), so `goto` and
+# labels don't parse either way.
+base: lua51
+
+globals:
+  vim:
+    any: true
+  Snacks:
+    any: true
+  LazyVim:
+    any: true
+
+  bit.tobit:
+    args:
+      - type: number
+    must_use: true
+  bit.tohex:
+    args:
+      - type: number
+      - type: number
+        required: false
+    must_use: true
+  bit.bnot:
+    args:
+      - type: number
+    must_use: true
+  bit.band:
+    args:
+      - type: number
+      - type: '...'
+        required: false
+    must_use: true
+  bit.bor:
+    args:
+      - type: number
+      - type: '...'
+        required: false
+    must_use: true
+  bit.bxor:
+    args:
+      - type: number
+      - type: '...'
+        required: false
+    must_use: true
+  bit.lshift:
+    args:
+      - type: number
+      - type: number
+    must_use: true
+  bit.rshift:
+    args:
+      - type: number
+      - type: number
+    must_use: true
+  bit.arshift:
+    args:
+      - type: number
+      - type: number
+    must_use: true
+  bit.rol:
+    args:
+      - type: number
+      - type: number
+    must_use: true
+  bit.ror:
+    args:
+      - type: number
+      - type: number
+    must_use: true
+  bit.bswap:
+    args:
+      - type: number
+    must_use: true
+
+  jit.arch:
+    property: read-only
+  jit.os:
+    property: read-only
+  jit.version:
+    property: read-only
+  jit.version_num:
+    property: read-only
+  jit.on:
+    args:
+      - type: '...'
+        required: false
+  jit.off:
+    args:
+      - type: '...'
+        required: false
+  jit.flush:
+    args:
+      - type: '...'
+        required: false
+  jit.status:
+    args:
+      - type: '...'
+        required: false
+    must_use: true
+  jit.attach:
+    args:
+      - type: function
+      - type: string
+        required: false
+  jit.security:
+    args:
+      - type: '...'
+        required: false
+  jit.opt.start:
+    args:
+      - type: '...'
+        required: false
