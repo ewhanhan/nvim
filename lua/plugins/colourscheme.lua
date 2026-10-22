@@ -1,5 +1,6 @@
 local active_colorscheme = 'gruvbox-material' -- 'gruvbox' or 'gruvbox-material' SYNC(theme)
 
+---@type LazySpec
 return {
   {
     'ellisonleao/gruvbox.nvim',

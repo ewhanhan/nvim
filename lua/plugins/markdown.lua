@@ -1,5 +1,6 @@
 -- Markdown linting configuration
 -- Forces markdownlint-cli2 to use global config from ~/.markdownlint-cli2.jsonc
+---@type LazySpec
 return {
   {
     'mfussenegger/nvim-lint',

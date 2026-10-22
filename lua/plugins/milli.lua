@@ -1,6 +1,7 @@
 -- Amansingh-afk/milli.nvim: animated ASCII splash on the snacks dashboard.
 local SPLASH = 'dancerramp'
 
+---@type LazySpec
 return {
   {
     'Amansingh-afk/milli.nvim',

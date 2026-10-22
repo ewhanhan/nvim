@@ -42,6 +42,7 @@ local keys = {
   { '<leader>gP', false },
 }
 
+---@type LazySpec
 return {
   {
     'folke/snacks.nvim',

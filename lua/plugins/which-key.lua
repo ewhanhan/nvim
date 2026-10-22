@@ -3,6 +3,7 @@
 -- Hide infrequently-used or redundant keymaps from the popup.
 -- Mappings still work; they just don't clutter the menu.
 --
+---@type LazySpec
 return {
   {
     'folke/which-key.nvim',

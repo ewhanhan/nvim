@@ -1,4 +1,5 @@
 -- Override mini.move to free <M-h> and <M-l> for smart-splits resize
+---@type LazySpec
 return {
   {
     'nvim-mini/mini.move',

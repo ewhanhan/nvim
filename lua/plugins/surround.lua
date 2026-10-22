@@ -41,6 +41,7 @@
 --   vip S{     paragraph   →  { paragraph }
 --   V S<div>   line        →  <div>line</div>
 --
+---@type LazySpec
 return {
   {
     'kylechui/nvim-surround',

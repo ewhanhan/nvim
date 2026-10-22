@@ -1,6 +1,7 @@
 -- sphamba/smear-cursor.nvim: animated cursor trail rendered with text glyphs.
 -- Independent of g.snacks_animate (which stays off). Toggle with <leader>uM
 -- or :SmearCursorToggle if it ever gets in the way (e.g. screen recording)
+---@type LazySpec
 return {
   {
     'sphamba/smear-cursor.nvim',

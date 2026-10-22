@@ -6,6 +6,7 @@
 --   gss    substitute the whole line
 --   gS     substitute to end of line
 --   {visual} gs  substitute the selection
+---@type LazySpec
 return {
   {
     'gbprod/substitute.nvim',

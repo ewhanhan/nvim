@@ -17,6 +17,7 @@ local source_dir = (function()
   return base
 end)()
 
+---@type LazySpec
 return {
   {
     'alker0/chezmoi.vim',

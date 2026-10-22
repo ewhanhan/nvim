@@ -11,6 +11,7 @@
 -- stale preview. Replace reads the inputs directly. Sync All (edit or delete
 -- result lines, then apply) stays on `\s`.
 -- Avoid <M-CR>: Ghostty sends it for Shift+Enter.
+---@type LazySpec
 return {
   {
     'MagicDuck/grug-far.nvim',
