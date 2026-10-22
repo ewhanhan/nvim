@@ -14,6 +14,17 @@
 return {
   {
     'MagicDuck/grug-far.nvim',
+    keys = {
+      -- LazyVim's <leader>sr without the `*.<ext>` files filter prefill.
+      {
+        '<leader>sr',
+        function()
+          require('grug-far').open({ transient = true })
+        end,
+        mode = { 'n', 'x' },
+        desc = 'Search and Replace',
+      },
+    },
     opts = {
       keymaps = {
         replace = '<C-s>',
