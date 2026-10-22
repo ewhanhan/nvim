@@ -20,6 +20,8 @@ return {
         end,
       }):map('<leader>uM')
     end,
+    ---@module 'smear_cursor'
+    ---@type SmearCursor.Config
     opts = {
       -- Ghostty rasterizes legacy computing symbols natively, so the smear
       -- renders at sub-cell resolution instead of coarse block characters

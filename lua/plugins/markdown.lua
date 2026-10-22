@@ -24,6 +24,8 @@ return {
   -- render-markdown.nvim tweaks
   {
     'MeanderingProgrammer/render-markdown.nvim',
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
     opts = {
       -- In-process LSP completions for callouts ([!NOTE]) and checkbox states.
       -- Rides on blink.cmp (LazyVim's default engine), no extra source needed.
@@ -68,6 +70,8 @@ return {
         desc = 'Stop Markdown Preview',
       },
     },
+    ---@module 'livepreview'
+    ---@type LivePreviewConfig
     opts = {
       picker = 'snacks.picker',
       sync_scroll = true,

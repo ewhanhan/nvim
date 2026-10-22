@@ -14,6 +14,8 @@ return {
   },
   {
     'folke/snacks.nvim',
+    ---@module 'snacks'
+    ---@param opts snacks.Config
     opts = function(_, opts)
       -- pcall: load() errors on a typo'd/renamed SPLASH (runtime.lua:39), which
       -- would otherwise throw inside snacks' opts pipeline and break the whole

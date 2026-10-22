@@ -16,6 +16,8 @@ return {
   },
   {
     'LazyVim/LazyVim',
+    ---@module 'lazyvim.config'
+    ---@type LazyVimOptions
     opts = {
       colorscheme = active_colorscheme,
     },

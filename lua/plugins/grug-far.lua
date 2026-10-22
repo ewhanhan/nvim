@@ -62,6 +62,8 @@ return {
         end,
       })
     end,
+    ---@module 'grug-far'
+    ---@type grug.far.OptionsOverride
     opts = {
       keymaps = {
         replace = '<C-s>',

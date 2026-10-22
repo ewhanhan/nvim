@@ -47,6 +47,8 @@ return {
   {
     'folke/snacks.nvim',
     keys = keys,
+    ---@module 'snacks'
+    ---@type snacks.Config
     opts = {
       dashboard = {
         preset = { keys = dashboard_keys },
